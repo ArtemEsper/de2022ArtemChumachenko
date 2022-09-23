@@ -1,5 +1,5 @@
 """
-Tests for main.py
+Tests for main_job2.py
 # TODO: write tests
 """
 from unittest import TestCase, mock

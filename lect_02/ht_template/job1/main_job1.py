@@ -1,13 +1,14 @@
 """
 This file contains the controller that accepts command via HTTP
-and trigger business logic layer for job2
+and trigger business logic layer for job 1
 """
 import os
 
 from flask import Flask, request
 from flask import typing as flask_typing
 
-import save_in_avro
+from lect_02.ht_template.job1 import api
+from lect_02.ht_template.job1 import storage
 
 AUTH_TOKEN = os.environ.get("API_AUTH_TOKEN")
 
@@ -29,11 +30,12 @@ def main() -> flask_typing.ResponseReturnValue:
      }
      """
     input_data: dict = request.json
-    save_in_avro.avro(input_data['raw_dir'], input_data['stg_dir'])
+    json_content = api.get_sales(input_data['date'])
+    storage.save_to_disk(json_content, input_data['raw_dir'])
     return {
                "message": "Data retrieved successfully from API",
            }, 201
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="localhost", port=8082)
+    app.run(debug=True, host="localhost", port=8081)

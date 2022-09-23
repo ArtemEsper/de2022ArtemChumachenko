@@ -2,7 +2,6 @@ import os
 import time
 import requests
 
-
 BASE_DIR = os.environ.get("BASE_DIR")
 
 if not BASE_DIR:

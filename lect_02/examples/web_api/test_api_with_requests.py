@@ -2,7 +2,7 @@ import os
 import requests
 
 
-AUTH_TOKEN = os.environ['AUTH_TOKEN']
+AUTH_TOKEN = os.environ['API_AUTH_TOKEN']
 
 
 def main():
